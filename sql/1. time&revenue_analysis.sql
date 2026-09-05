@@ -1,39 +1,26 @@
 -- =========================================================
 -- 1.1 MONTHLY REVENUE AND MOM GROWTH
--- Grain: SalesMonth
--- May 2018 is excluded from MoM comparison
 -- =========================================================
-
 WITH monthly_revenue AS (
     SELECT
         DATE_TRUNC(DATE(SalesDate), MONTH) AS SalesMonth,
-
         SUM(Revenue) AS TotalRevenue,
-
         COUNT(DISTINCT TransactionNumber) AS TotalOrders
-
     FROM `sales-of-fmcg-stores.salesfmcg.vw_sales_analysis`
-
     WHERE SalesDate IS NOT NULL
       AND DATE(SalesDate) < '2018-05-01'
-
     GROUP BY SalesMonth
 )
-
 SELECT
     SalesMonth,
-
     ROUND(TotalRevenue, 2) AS TotalRevenue,
-
     TotalOrders,
-
     ROUND(
         LAG(TotalRevenue) OVER (
             ORDER BY SalesMonth
         ),
         2
     ) AS PreviousMonthRevenue,
-
     ROUND(
         SAFE_DIVIDE(
             TotalRevenue
@@ -43,12 +30,9 @@ SELECT
             LAG(TotalRevenue) OVER (
                 ORDER BY SalesMonth
             )
-        ) * 100,
-        2
+        ) * 100, 2
     ) AS MoM_Growth_Percentage
-
 FROM monthly_revenue
-
 ORDER BY SalesMonth;
 
 -- =========================================================
