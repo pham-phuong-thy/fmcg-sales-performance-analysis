@@ -2,8 +2,6 @@
 
 End-to-end analytics project on a FMCG (Fast-Moving Consumer Goods) retail dataset — from raw transactional data in **Google BigQuery** to two interactive **Tableau Public** dashboards, covering revenue trends, category/product performance, customer segmentation, and geographic distribution.
 
-**Live dashboards:** [View on Tableau Public](#) *(replace with your published link)*
-
 ---
 
 ## Project Overview
