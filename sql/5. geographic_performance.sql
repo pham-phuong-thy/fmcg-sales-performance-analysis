@@ -55,5 +55,4 @@ SELECT
         ORDER BY TotalQuantity DESC
     ) AS ConsumptionVolumeRank
 FROM city_stats
-
 ORDER BY TotalRevenue DESC;
